@@ -12,7 +12,7 @@ public class GildedRoseTest {
 	public void testTheTruth() {
 		assertTrue(true);
 	}
-	
+
 	@Test
 	public void testNormalQuality()
 	{
