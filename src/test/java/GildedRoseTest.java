@@ -152,6 +152,19 @@ public class GildedRoseTest {
 		assertItem("Backstage Passes Last Day", rose.getItems().get(0), expectedItem);
 	}
 
+	/**
+	 * Test "Conjured" items quality behavior
+	 */
+	@Test
+	public void testConjured(){
+		GildedRose rose = new GildedRose();
+		rose.setItems(new ArrayList<Item>());
+		rose.addItem(new Item("Conjured item", 4, 20));
+		rose.updateQuality();
+
+		Item expectedItem = new Item("Conjured item", 3, 18);
+		assertItem("Conjured ", rose.getItems().get(0), expectedItem);
+	}
 
 	private void assertItem(String message, Item expected, Item actual)	{
 		assertEquals(message+" : Not same SellIn", actual.getSellIn(), expected.getSellIn());

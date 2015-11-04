@@ -34,37 +34,28 @@ public class GildedRose {
         rose.addItem(new Item("Backstage passes to a TAFKAL80ETC concert", 0, 20));
         rose.addItem(new Item("Conjured Mana Cake", 3, 6));
 
-        System.out.println("-------------------------- Initial items:");
-        rose.printItems();
-
         rose.updateQuality();
-
-        System.out.println("-------------------------- Updated items:");
-        rose.printItems();
 }
 
-    private void printItems()
-    {
-        for(Item item : this.items)
-        {
-            System.out.println("Item name:\'" + item.getName() +
-                    "\', SellIn: " + item.getSellIn() +
-                    ", Quality: " + item.getQuality());
-        }
-    }
-	
     public void updateQuality()
     {
         for (Item item:items) {
+            //sulfuras type of items is left as it is
             if(isSulfuras(item.getName())) continue;
+
+            //Aged brie type is updated accordingly
             if(isAgedBrie(item.getName())){
                 updateAgedBrie(item);
                 continue;
             }
+
+            //Backstage passes are updated accordingly
             if(isBackstagePass(item.getName())){
                 updateBackstagePass(item);
                 continue;
             }
+
+            //Conjured items are updated accordingly
             if(isConjured(item.getName())){
                 updateConjured(item);
                 continue;
@@ -111,8 +102,6 @@ public class GildedRose {
         item.setQuality ( (quality < 0) ? 0 : quality);
         item.setSellIn(sellIn - 1);
     }
-
-
 
     private static final String SULFURAS_PATTERN = "Sulfuras";
     private static final String AGED_BRIE_PATTERN = "Aged Brie";
